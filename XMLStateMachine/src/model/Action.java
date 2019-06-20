@@ -9,6 +9,10 @@ public class Action {
 	private String name;
 	private String label;
 
+	public Action() {
+		super();
+	}
+
 	public Action(String name, String label) {
 		super();
 		this.name = name;

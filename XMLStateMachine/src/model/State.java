@@ -20,6 +20,10 @@ public class State {
 	public ArrayList<Field> stateMandatoryFields;
 	public ArrayList<Action> actions;
 
+	public State() {
+		super();
+	}
+
 	public State(String lifecycleName, String displayName, String entityName, ArrayList<StateSemantics> stateSemantic,
 			int entityId) {
 		super();
@@ -28,6 +32,11 @@ public class State {
 		this.entityName = entityName;
 		this.stateSemantic = stateSemantic;
 		this.entityId = entityId;
+
+		this.stateDenyModifyingFields = new ArrayList<>();
+		this.stateHideFields = new ArrayList<>();
+		this.stateMandatoryFields = new ArrayList<>();
+		this.actions = new ArrayList<>();
 	}
 
 	public String getLifecycleName() {
@@ -102,17 +111,52 @@ public class State {
 		this.actions = actions;
 	}
 
-	public void addField(Field f) {
-		
+	public void addDenyModifyingField(Field f) {
+		this.stateDenyModifyingFields.add(f);
 	}
 
-	public Field findField(String name) {
-		// TODO: implement
+	public void addHideField(Field f) {
+		this.stateHideFields.add(f);
+	}
+
+	public void addMandatoryField(Field f) {
+		this.stateMandatoryFields.add(f);
+	}
+
+	public Field findDenyModifyingField(String name) {
+		for (Field f : this.stateDenyModifyingFields) {
+			if (f.getName().equalsIgnoreCase(name))
+				return f;
+		}
 		return null;
 	}
 
-	public void deleteField(Field f) {
-		// TODO: implement
+	public Field findHideField(String name) {
+		for (Field f : this.stateHideFields) {
+			if (f.getName().equalsIgnoreCase(name))
+				return f;
+		}
+		return null;
+	}
+
+	public Field findMandatoryField(String name) {
+		for (Field f : this.stateMandatoryFields) {
+			if (f.getName().equalsIgnoreCase(name))
+				return f;
+		}
+		return null;
+	}
+
+	public void deleteDenyModifyingField(Field f) {
+		this.stateDenyModifyingFields.remove(f);
+	}
+
+	public void deleteHideField(Field f) {
+		this.stateHideFields.remove(f);
+	}
+
+	public void deleteMandatoryField(Field f) {
+		this.stateMandatoryFields.remove(f);
 	}
 
 	public void addAction(Action a) {
@@ -121,13 +165,14 @@ public class State {
 
 	public Action findAction(String name) {
 		for (Action a : this.actions) {
-			if(a.getName())
+			if (a.getName().equalsIgnoreCase(name))
+				return a;
 		}
 		return null;
 	}
 
 	public void deleteAction(Action a) {
-		// TODO: implement
+		this.actions.remove(a);
 	}
 
 }

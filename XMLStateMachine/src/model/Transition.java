@@ -11,14 +11,23 @@ public class Transition {
 	private String lifecycleName;
 	private String entityName;
 
-	public State state;
+	private State startState;
+	private State transitionOnSucceed;
+	private State transitionOnFail;
 
-	public Transition(int entityId, String lifecycleName, String entityName, State state) {
+	public Transition() {
+		super();
+	}
+
+	public Transition(int entityId, String lifecycleName, String entityName, State startState,
+			State transitionOnSucceed, State transitionOnFail) {
 		super();
 		this.entityId = entityId;
 		this.lifecycleName = lifecycleName;
 		this.entityName = entityName;
-		this.state = state;
+		this.startState = startState;
+		this.transitionOnSucceed = transitionOnSucceed;
+		this.transitionOnFail = transitionOnFail;
 	}
 
 	public int getEntityId() {
@@ -45,12 +54,28 @@ public class Transition {
 		this.entityName = entityName;
 	}
 
-	public State getState() {
-		return state;
+	public State getStartState() {
+		return startState;
 	}
 
-	public void setState(State state) {
-		this.state = state;
+	public void setStartState(State startState) {
+		this.startState = startState;
+	}
+
+	public State getTransitionOnSucceed() {
+		return transitionOnSucceed;
+	}
+
+	public void setTransitionOnSucceed(State transitionOnSucceed) {
+		this.transitionOnSucceed = transitionOnSucceed;
+	}
+
+	public State getTransitionOnFail() {
+		return transitionOnFail;
+	}
+
+	public void setTransitionOnFail(State transitionOnFail) {
+		this.transitionOnFail = transitionOnFail;
 	}
 
 }

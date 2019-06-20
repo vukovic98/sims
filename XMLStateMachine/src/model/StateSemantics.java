@@ -6,18 +6,72 @@
 
 package model;
 
-
 public enum StateSemantics {
-   Init,
-   SaveEnables,
-   DeleteEnabled,
-   Submited,
-   Simulate,
-   Published,
-   Returned,
-   Final,
-   Rejected,
-   Approved,
-   Archived;
+	Init {
+		@Override
+		public String toString() {
+			return "Init";
+		}
+	},
+	SaveEnables {
+		@Override
+		public String toString() {
+			return "SaveEnables";
+		}
+	},
+	DeleteEnabled {
+		@Override
+		public String toString() {
+			return "DeleteEnabled";
+		}
+	},
+	Submited {
+		@Override
+		public String toString() {
+			return "Submited";
+		}
+	},
+	Simulate {
+		@Override
+		public String toString() {
+			return "Simulate";
+		}
+	},
+	Published {
+		@Override
+		public String toString() {
+			return "Published";
+		}
+	},
+	Returned {
+		@Override
+		public String toString() {
+			return "Returned";
+		}
+	},
+	Final {
+		@Override
+		public String toString() {
+			return "Final";
+		}
+	},
+	Rejected {
+		@Override
+		public String toString() {
+			return "Rejected";
+		}
+	},
+	Approved {
+		@Override
+		public String toString() {
+			return "Approved";
+		}
+	},
+	Archived {
+		@Override
+		public String toString() {
+			return "Archived";
+		}
+	};
 
 }

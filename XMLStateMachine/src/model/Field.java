@@ -10,6 +10,10 @@ public class Field {
 	private String dataType;
 	private int label;
 
+	public Field() {
+		super();
+	}
+
 	public Field(String name, String dataType, int label) {
 		super();
 		this.name = name;
