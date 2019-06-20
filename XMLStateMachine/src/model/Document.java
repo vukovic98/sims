@@ -45,13 +45,8 @@ public class Document {
 		return null;
 	}
 
-	public void deleteTransition(int idTransition) {
-		for (Transition t : this.transitions) {
-			if(idTransition == t.getEntityId()) {
-				this.transitions.remove(t);
-				break;
-			}
-		}
+	public void deleteTransition(Transition t) {
+		this.transitions.remove(t);
 	}
 
 	public void addField(Field f) {
@@ -67,13 +62,8 @@ public class Document {
 		return null;
 	}
 
-	public void deleteField(String name) {
-		for (Field f : this.fields) {
-			if(name.equalsIgnoreCase(f.getName())) {
-				this.fields.remove(f);
-				break;
-			}
-		}
+	public void deleteField(Field f) {
+		this.fields.remove(f);
 	}
 
 	public void addAction(Action a) {
@@ -89,13 +79,8 @@ public class Document {
 		return null;
 	}
 
-	public void deleteAction(String name) {
-		for (Action a : this.actions) {
-			if(name.equalsIgnoreCase(a.getName())) {
-				this.actions.remove(a);
-				break;
-			}
-		}
+	public void deleteAction(Action a) {
+		this.actions.remove(a);
 	}
 
 	public State changeState(State newState) {
