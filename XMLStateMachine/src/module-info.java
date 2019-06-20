@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Vladimir
+ *
+ */
+module XMLStateMachine {
+}
