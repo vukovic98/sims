@@ -8,21 +8,28 @@ package model;
 import java.util.ArrayList;
 
 public class Document {
+
+
 	private String title;
 
 	public ArrayList<Transition> transitions;
 	public State currentState;
 	public ArrayList<Action> actions;
-	public ArrayList<Field> field;
+	public ArrayList<Field> fields;
 
-	public Document(String title, ArrayList<Transition> transitions, State currentState, ArrayList<Action> actions,
-			ArrayList<Field> field) {
+	public Document() {
+		transitions = new ArrayList<Transition>();
+		actions = new ArrayList<Action>();
+		fields = new ArrayList<Field>();
+	}
+	
+	public Document(String title, State currentState) {
 		super();
 		this.title = title;
-		this.transitions = transitions;
 		this.currentState = currentState;
-		this.actions = actions;
-		this.field = field;
+		transitions = new ArrayList<Transition>();
+		actions = new ArrayList<Action>();
+		fields = new ArrayList<Field>();
 	}
 
 	public void addTransition(Transition t) {
@@ -31,44 +38,69 @@ public class Document {
 
 	public Transition findTransition(int idTransition) {
 		for (Transition t : this.transitions) {
-			
+			if(idTransition == t.getEntityId()) {
+				return t;
+			}
 		}
 		return null;
 	}
 
-	public void deleteTransition(Transition t) {
-		// TODO: implement
+	public void deleteTransition(int idTransition) {
+		for (Transition t : this.transitions) {
+			if(idTransition == t.getEntityId()) {
+				this.transitions.remove(t);
+				break;
+			}
+		}
 	}
 
 	public void addField(Field f) {
-		// TODO: implement
+		this.fields.add(f);
 	}
 
 	public Field findField(String name) {
-		// TODO: implement
+		for (Field f : this.fields) {
+			if(name.equalsIgnoreCase(f.getName())) {
+				return f;
+			}
+		}
 		return null;
 	}
 
-	public void deleteField(Field f) {
-		// TODO: implement
+	public void deleteField(String name) {
+		for (Field f : this.fields) {
+			if(name.equalsIgnoreCase(f.getName())) {
+				this.fields.remove(f);
+				break;
+			}
+		}
 	}
 
 	public void addAction(Action a) {
-		// TODO: implement
+		this.actions.add(a);
 	}
 
 	public Action findAction(String name) {
-		// TODO: implement
+		for (Action a : this.actions) {
+			if(name.equalsIgnoreCase(a.getName())) {
+				return a;
+			}
+		}
 		return null;
 	}
 
-	public void deleteAction(Action a) {
-		// TODO: implement
+	public void deleteAction(String name) {
+		for (Action a : this.actions) {
+			if(name.equalsIgnoreCase(a.getName())) {
+				this.actions.remove(a);
+				break;
+			}
+		}
 	}
 
 	public State changeState(State newState) {
-		// TODO: implement
-		return null;
+		this.currentState = newState;
+		return this.currentState;
 	}
 
 }
