@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class Document {
 
-
 	private String title;
 
 	public ArrayList<Transition> transitions;
@@ -22,7 +21,7 @@ public class Document {
 		actions = new ArrayList<Action>();
 		fields = new ArrayList<Field>();
 	}
-	
+
 	public Document(String title, State currentState) {
 		super();
 		this.title = title;
@@ -32,13 +31,53 @@ public class Document {
 		fields = new ArrayList<Field>();
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public ArrayList<Transition> getTransitions() {
+		return transitions;
+	}
+
+	public void setTransitions(ArrayList<Transition> transitions) {
+		this.transitions = transitions;
+	}
+
+	public State getCurrentState() {
+		return currentState;
+	}
+
+	public void setCurrentState(State currentState) {
+		this.currentState = currentState;
+	}
+
+	public ArrayList<Action> getActions() {
+		return actions;
+	}
+
+	public void setActions(ArrayList<Action> actions) {
+		this.actions = actions;
+	}
+
+	public ArrayList<Field> getFields() {
+		return fields;
+	}
+
+	public void setFields(ArrayList<Field> fields) {
+		this.fields = fields;
+	}
+
 	public void addTransition(Transition t) {
 		this.transitions.add(t);
 	}
 
 	public Transition findTransition(int idTransition) {
 		for (Transition t : this.transitions) {
-			if(idTransition == t.getEntityId()) {
+			if (idTransition == t.getEntityId()) {
 				return t;
 			}
 		}
@@ -55,7 +94,7 @@ public class Document {
 
 	public Field findField(String name) {
 		for (Field f : this.fields) {
-			if(name.equalsIgnoreCase(f.getName())) {
+			if (name.equalsIgnoreCase(f.getName())) {
 				return f;
 			}
 		}
@@ -72,7 +111,7 @@ public class Document {
 
 	public Action findAction(String name) {
 		for (Action a : this.actions) {
-			if(name.equalsIgnoreCase(a.getName())) {
+			if (name.equalsIgnoreCase(a.getName())) {
 				return a;
 			}
 		}
