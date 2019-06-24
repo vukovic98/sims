@@ -6,4 +6,5 @@
  *
  */
 module XMLStateMachine {
+	requires java.desktop;
 }
