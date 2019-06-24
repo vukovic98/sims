@@ -24,19 +24,18 @@ public class State {
 		super();
 	}
 
-	public State(String lifecycleName, String displayName, String entityName, ArrayList<StateSemantics> stateSemantic,
-			int entityId) {
+	public State(String lifecycleName, String displayName, String entityName, int entityId) {
 		super();
 		this.lifecycleName = lifecycleName;
 		this.displayName = displayName;
 		this.entityName = entityName;
-		this.stateSemantic = stateSemantic;
 		this.entityId = entityId;
 
 		this.stateDenyModifyingFields = new ArrayList<>();
 		this.stateHideFields = new ArrayList<>();
 		this.stateMandatoryFields = new ArrayList<>();
 		this.actions = new ArrayList<>();
+		this.stateSemantic = new ArrayList<>();
 	}
 
 	public String getLifecycleName() {

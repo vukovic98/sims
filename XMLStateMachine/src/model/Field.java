@@ -8,13 +8,13 @@ package model;
 public class Field {
 	private String name;
 	private String dataType;
-	private int label;
+	private String label;
 
 	public Field() {
 		super();
 	}
 
-	public Field(String name, String dataType, int label) {
+	public Field(String name, String dataType, String label) {
 		super();
 		this.name = name;
 		this.dataType = dataType;
@@ -37,11 +37,11 @@ public class Field {
 		this.dataType = dataType;
 	}
 
-	public int getLabel() {
+	public String getLabel() {
 		return label;
 	}
 
-	public void setLabel(int label) {
+	public void setLabel(String label) {
 		this.label = label;
 	}
 
