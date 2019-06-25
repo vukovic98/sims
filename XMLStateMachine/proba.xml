@@ -1,0 +1,339 @@
+<model.Document>
+  <title>AccessPermit</title>
+  <transitions>
+    <model.Transition>
+      <entityId>1</entityId>
+      <lifecycleName>Draft to Submit</lifecycleName>
+      <entityName>AccessPermit</entityName>
+      <startState>
+        <lifecycleName>Init state</lifecycleName>
+        <displayName>Draft</displayName>
+        <entityName>AccessPermit</entityName>
+        <stateSemantic>
+          <model.StateSemantics>Init</model.StateSemantics>
+          <model.StateSemantics>SaveEnabled</model.StateSemantics>
+          <model.StateSemantics>DeleteEnabled</model.StateSemantics>
+        </stateSemantic>
+        <entityId>1</entityId>
+        <stateDenyModifyingFields>
+          <model.Field>
+            <name>ACCESS_PERMIT_STATUS</name>
+            <dataType>string</dataType>
+            <label>Status: </label>
+          </model.Field>
+          <model.Field>
+            <name>ACCESS_PERMIT_NAME</name>
+            <dataType>string</dataType>
+            <label>Name: </label>
+          </model.Field>
+          <model.Field>
+            <name>ACCESS_PERMIT_DATE_TIME</name>
+            <dataType>date</dataType>
+            <label>Date and time: </label>
+          </model.Field>
+          <model.Field>
+            <name>ACCESS_PERMIT_ANSWERS</name>
+            <dataType>string</dataType>
+            <label>Answers: </label>
+          </model.Field>
+        </stateDenyModifyingFields>
+        <stateHideFields>
+          <model.Field reference="../../stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field>
+            <name>SAFETY_DOCUMENT_REV_NO</name>
+            <dataType>string</dataType>
+            <label>Rev no: </label>
+          </model.Field>
+          <model.Field>
+            <name>ACCESS_PERMIT_PREV_STATE</name>
+            <dataType>state</dataType>
+            <label>Previous state: </label>
+          </model.Field>
+          <model.Field>
+            <name>ACCESS_PERMIT_DENYING_REASON</name>
+            <dataType>string</dataType>
+            <label>Denying reason: </label>
+          </model.Field>
+        </stateHideFields>
+        <stateMandatoryFields/>
+        <actions>
+          <model.Action>
+            <name>submit</name>
+            <label>Submit</label>
+          </model.Action>
+        </actions>
+      </startState>
+      <transitionOnSucceed>
+        <lifecycleName>Submit</lifecycleName>
+        <displayName>Submitted</displayName>
+        <entityName>AccessPermit</entityName>
+        <stateSemantic>
+          <model.StateSemantics>SaveEnabled</model.StateSemantics>
+          <model.StateSemantics>Submited</model.StateSemantics>
+          <model.StateSemantics>Simulate</model.StateSemantics>
+        </stateSemantic>
+        <entityId>2</entityId>
+        <stateDenyModifyingFields>
+          <model.Field reference="../../../startState/stateDenyModifyingFields/model.Field"/>
+          <model.Field reference="../../../startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../startState/stateDenyModifyingFields/model.Field[4]"/>
+        </stateDenyModifyingFields>
+        <stateHideFields>
+          <model.Field reference="../../../startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../startState/stateHideFields/model.Field[3]"/>
+          <model.Field reference="../../../startState/stateHideFields/model.Field[4]"/>
+          <model.Field reference="../../../startState/stateHideFields/model.Field[5]"/>
+        </stateHideFields>
+        <stateMandatoryFields>
+          <model.Field>
+            <name>ACCESS_PERMIT_EQUIPMENT</name>
+            <dataType>string</dataType>
+            <label>Equipment: </label>
+          </model.Field>
+        </stateMandatoryFields>
+        <actions>
+          <model.Action>
+            <name>deny</name>
+            <label>Deny</label>
+          </model.Action>
+          <model.Action>
+            <name>publish</name>
+            <label>Publish</label>
+          </model.Action>
+        </actions>
+      </transitionOnSucceed>
+      <transitionOnFail reference="../startState"/>
+    </model.Transition>
+    <model.Transition>
+      <entityId>2</entityId>
+      <lifecycleName>Submit to Publish</lifecycleName>
+      <entityName>AccessPermit</entityName>
+      <startState reference="../../model.Transition/transitionOnSucceed"/>
+      <transitionOnSucceed>
+        <lifecycleName>Publish</lifecycleName>
+        <displayName>Published</displayName>
+        <entityName>AccessPermit</entityName>
+        <stateSemantic>
+          <model.StateSemantics>SaveEnabled</model.StateSemantics>
+          <model.StateSemantics>Published</model.StateSemantics>
+          <model.StateSemantics>Simulate</model.StateSemantics>
+        </stateSemantic>
+        <entityId>3</entityId>
+        <stateDenyModifyingFields>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field>
+            <name>ACCESS_PERMIT_POINTS</name>
+            <dataType>string</dataType>
+            <label>Points: </label>
+          </model.Field>
+        </stateDenyModifyingFields>
+        <stateHideFields>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[5]"/>
+        </stateHideFields>
+        <stateMandatoryFields>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field reference="../../stateDenyModifyingFields/model.Field[5]"/>
+        </stateMandatoryFields>
+        <actions>
+          <model.Action>
+            <name>return</name>
+            <label>Return</label>
+          </model.Action>
+        </actions>
+      </transitionOnSucceed>
+      <transitionOnFail reference="../../model.Transition/transitionOnSucceed"/>
+    </model.Transition>
+    <model.Transition>
+      <entityId>3</entityId>
+      <lifecycleName>Publish to Return</lifecycleName>
+      <entityName>AccessPermit</entityName>
+      <startState reference="../../model.Transition[2]/transitionOnSucceed"/>
+      <transitionOnSucceed>
+        <lifecycleName>Return</lifecycleName>
+        <displayName>Returned</displayName>
+        <entityName>AccessPermit</entityName>
+        <stateSemantic>
+          <model.StateSemantics>SaveEnabled</model.StateSemantics>
+          <model.StateSemantics>Returned</model.StateSemantics>
+          <model.StateSemantics>Simulate</model.StateSemantics>
+        </stateSemantic>
+        <entityId>4</entityId>
+        <stateDenyModifyingFields>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+          <model.Field>
+            <name>ACCESS_PERMIT_PHONE_NO</name>
+            <dataType>string</dataType>
+            <label>Phone number: </label>
+          </model.Field>
+        </stateDenyModifyingFields>
+        <stateHideFields>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[5]"/>
+        </stateHideFields>
+        <stateMandatoryFields>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+          <model.Field reference="../../stateDenyModifyingFields/model.Field[7]"/>
+        </stateMandatoryFields>
+        <actions>
+          <model.Action>
+            <name>complete</name>
+            <label>Complete</label>
+          </model.Action>
+        </actions>
+      </transitionOnSucceed>
+      <transitionOnFail reference="../../model.Transition[2]/transitionOnSucceed"/>
+    </model.Transition>
+    <model.Transition>
+      <entityId>4</entityId>
+      <lifecycleName>Return to Complete</lifecycleName>
+      <entityName>AccessPermit</entityName>
+      <startState reference="../../model.Transition[3]/transitionOnSucceed"/>
+      <transitionOnSucceed>
+        <lifecycleName>Complete</lifecycleName>
+        <displayName>Completed</displayName>
+        <entityName>AccessPermit</entityName>
+        <stateSemantic>
+          <model.StateSemantics>SaveEnabled</model.StateSemantics>
+          <model.StateSemantics>Final</model.StateSemantics>
+          <model.StateSemantics>DeleteEnabled</model.StateSemantics>
+        </stateSemantic>
+        <entityId>5</entityId>
+        <stateDenyModifyingFields>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+          <model.Field reference="../../../../model.Transition[3]/transitionOnSucceed/stateDenyModifyingFields/model.Field[7]"/>
+        </stateDenyModifyingFields>
+        <stateHideFields>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[5]"/>
+        </stateHideFields>
+        <stateMandatoryFields>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+        </stateMandatoryFields>
+        <actions>
+          <model.Action>
+            <name>archive</name>
+            <label>Archive</label>
+          </model.Action>
+        </actions>
+      </transitionOnSucceed>
+      <transitionOnFail reference="../../model.Transition[3]/transitionOnSucceed"/>
+    </model.Transition>
+    <model.Transition>
+      <entityId>5</entityId>
+      <lifecycleName>Submit to Deny</lifecycleName>
+      <entityName>AccessPermit</entityName>
+      <startState reference="../../model.Transition/transitionOnSucceed"/>
+      <transitionOnSucceed>
+        <lifecycleName>Deny</lifecycleName>
+        <displayName>Denied</displayName>
+        <entityName>AccessPermit</entityName>
+        <stateSemantic>
+          <model.StateSemantics>SaveEnabled</model.StateSemantics>
+          <model.StateSemantics>Rejected</model.StateSemantics>
+          <model.StateSemantics>Final</model.StateSemantics>
+          <model.StateSemantics>DeleteEnabled</model.StateSemantics>
+        </stateSemantic>
+        <entityId>6</entityId>
+        <stateDenyModifyingFields>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+          <model.Field reference="../../../../model.Transition[3]/transitionOnSucceed/stateDenyModifyingFields/model.Field[7]"/>
+        </stateDenyModifyingFields>
+        <stateHideFields>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[4]"/>
+        </stateHideFields>
+        <stateMandatoryFields/>
+        <actions>
+          <model.Action reference="../../../../model.Transition[4]/transitionOnSucceed/actions/model.Action"/>
+        </actions>
+      </transitionOnSucceed>
+      <transitionOnFail reference="../../model.Transition/transitionOnSucceed"/>
+    </model.Transition>
+    <model.Transition>
+      <entityId>18</entityId>
+      <lifecycleName>Complete to Archive</lifecycleName>
+      <entityName>AccessPermit</entityName>
+      <startState reference="../../model.Transition[4]/transitionOnSucceed"/>
+      <transitionOnSucceed>
+        <lifecycleName>Archive</lifecycleName>
+        <displayName>Archived</displayName>
+        <entityName>AccessPermit</entityName>
+        <stateSemantic>
+          <model.StateSemantics>SaveEnabled</model.StateSemantics>
+          <model.StateSemantics>Archived</model.StateSemantics>
+        </stateSemantic>
+        <entityId>7</entityId>
+        <stateDenyModifyingFields>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[2]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[3]"/>
+          <model.Field reference="../../../../model.Transition/startState/stateDenyModifyingFields/model.Field[4]"/>
+          <model.Field reference="../../../../model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+          <model.Field reference="../../../../model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+          <model.Field reference="../../../../model.Transition[3]/transitionOnSucceed/stateDenyModifyingFields/model.Field[7]"/>
+        </stateDenyModifyingFields>
+        <stateHideFields>
+          <model.Field reference="../../../../model.Transition/startState/stateHideFields/model.Field[5]"/>
+        </stateHideFields>
+        <stateMandatoryFields/>
+        <actions/>
+      </transitionOnSucceed>
+      <transitionOnFail reference="../../model.Transition[4]/transitionOnSucceed"/>
+    </model.Transition>
+    <model.Transition>
+      <entityId>19</entityId>
+      <lifecycleName>Deny to Archive</lifecycleName>
+      <entityName>AccessPermit</entityName>
+      <startState reference="../../model.Transition[5]/transitionOnSucceed"/>
+      <transitionOnSucceed reference="../../model.Transition[6]/transitionOnSucceed"/>
+      <transitionOnFail reference="../../model.Transition[5]/transitionOnSucceed"/>
+    </model.Transition>
+  </transitions>
+  <currentState reference="../transitions/model.Transition/startState"/>
+  <actions>
+    <model.Action reference="../../transitions/model.Transition/startState/actions/model.Action"/>
+    <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/actions/model.Action"/>
+    <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/actions/model.Action[2]"/>
+    <model.Action reference="../../transitions/model.Transition[2]/transitionOnSucceed/actions/model.Action"/>
+    <model.Action reference="../../transitions/model.Transition[3]/transitionOnSucceed/actions/model.Action"/>
+    <model.Action reference="../../transitions/model.Transition[4]/transitionOnSucceed/actions/model.Action"/>
+  </actions>
+  <fields>
+    <model.Field reference="../../transitions/model.Transition/startState/stateDenyModifyingFields/model.Field"/>
+    <model.Field reference="../../transitions/model.Transition/startState/stateDenyModifyingFields/model.Field[2]"/>
+    <model.Field reference="../../transitions/model.Transition/startState/stateDenyModifyingFields/model.Field[3]"/>
+    <model.Field reference="../../transitions/model.Transition/startState/stateDenyModifyingFields/model.Field[4]"/>
+    <model.Field reference="../../transitions/model.Transition/startState/stateHideFields/model.Field[3]"/>
+    <model.Field reference="../../transitions/model.Transition/startState/stateHideFields/model.Field[4]"/>
+    <model.Field reference="../../transitions/model.Transition/startState/stateHideFields/model.Field[5]"/>
+    <model.Field reference="../../transitions/model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
+    <model.Field reference="../../transitions/model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+    <model.Field reference="../../transitions/model.Transition[3]/transitionOnSucceed/stateDenyModifyingFields/model.Field[7]"/>
+  </fields>
+</model.Document>
