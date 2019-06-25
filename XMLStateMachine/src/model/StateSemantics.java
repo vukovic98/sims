@@ -13,10 +13,10 @@ public enum StateSemantics {
 			return "Init";
 		}
 	},
-	SaveEnables {
+	SaveEnabled {
 		@Override
 		public String toString() {
-			return "SaveEnables";
+			return "SaveEnabled";
 		}
 	},
 	DeleteEnabled {

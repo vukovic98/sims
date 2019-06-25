@@ -121,6 +121,10 @@ public class State {
 	public void addMandatoryField(Field f) {
 		this.stateMandatoryFields.add(f);
 	}
+	
+	public void addSemantic(StateSemantics c) {
+		this.stateSemantic.add(c);
+	}
 
 	public Field findDenyModifyingField(String name) {
 		for (Field f : this.stateDenyModifyingFields) {
