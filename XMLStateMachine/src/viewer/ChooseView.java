@@ -89,6 +89,7 @@ public class ChooseView extends JPanel{
 		
 		MainFrame mFrame = new MainFrame();
 		mFrame.setVisible(true);
+		
 	}
 	
 	void cancel() {
