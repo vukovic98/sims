@@ -14,7 +14,7 @@ public class MainFrame extends JFrame{
 	public MainFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(APP_TITLE);
-		setSize(500, 700);
+		setSize(400, 450);
 		setLocationRelativeTo(null);
 		
 		MainView mainView = new MainView();
