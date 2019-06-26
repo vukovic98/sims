@@ -15,7 +15,6 @@ import javax.swing.JTextField;
 
 import com.thoughtworks.xstream.XStream;
 
-import model.Document;
 
 
 public class ChooseView extends JPanel{
@@ -86,7 +85,10 @@ public class ChooseView extends JPanel{
 	void submit() {
 		XStream xs = new XStream();
 		
-		xs.fromXML(new File(txtPath.getText()), model.MainFrame.d);
+		xs.fromXML(new File(txtPath.getText()), model.Main.d);
+		
+		MainFrame mFrame = new MainFrame();
+		mFrame.setVisible(true);
 	}
 	
 	void cancel() {
