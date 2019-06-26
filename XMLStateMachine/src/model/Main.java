@@ -1,5 +1,11 @@
 package model;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import com.thoughtworks.xstream.XStream;
+
 import viewer.ChooseFrame;
 
 public class Main {
@@ -11,8 +17,7 @@ public class Main {
 	
 		ChooseFrame window = new ChooseFrame();
 		
-		window.setVisible(true);
+		window.setVisible(true);	
 		
 	}
-
 }
