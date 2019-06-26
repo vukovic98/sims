@@ -12,7 +12,8 @@ public class MainView extends JPanel{
 	 */
 	private static final long serialVersionUID = -3018696746928226635L;
 
-	private JPanel pnlContent;
+	private JPanel pnlInfo;
+	private JPanel pnlFields;
 
 	
 }

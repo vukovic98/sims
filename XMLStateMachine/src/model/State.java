@@ -19,6 +19,7 @@ public class State {
 	public ArrayList<Field> stateHideFields;
 	public ArrayList<Field> stateMandatoryFields;
 	public ArrayList<Action> actions;
+	public ArrayList<Transition> transitions;
 
 	public State() {
 		super();
@@ -36,6 +37,16 @@ public class State {
 		this.stateMandatoryFields = new ArrayList<>();
 		this.actions = new ArrayList<>();
 		this.stateSemantic = new ArrayList<>();
+		this.transitions = new ArrayList<Transition>();
+	}
+
+	
+	public ArrayList<Transition> getTransitions() {
+		return transitions;
+	}
+
+	public void setTransitions(ArrayList<Transition> transitions) {
+		this.transitions = transitions;
 	}
 
 	public String getLifecycleName() {
@@ -176,6 +187,22 @@ public class State {
 
 	public void deleteAction(Action a) {
 		this.actions.remove(a);
+	}
+	
+	public void addTransition(Transition t) {
+		this.transitions.add(t);
+	}
+	
+	public void deleteTransition(Transition t) {
+		this.transitions.remove(t);
+	}
+	
+	public Transition findTransition(int id) {
+		for (Transition t : this.transitions) {
+			if(t.getEntityId() == id)
+				return t;
+		}
+		return null;
 	}
 
 }

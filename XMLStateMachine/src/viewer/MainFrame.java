@@ -14,11 +14,11 @@ public class MainFrame extends JFrame{
 	public MainFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(APP_TITLE);
-		setSize(500, 150);
+		setSize(500, 700);
 		setLocationRelativeTo(null);
 		
-		ChooseView chooseView = new ChooseView();
+		MainView mainView = new MainView();
 		
-		add(chooseView);
+		add(mainView);
 	}
 }
