@@ -1,6 +1,9 @@
 package viewer;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -9,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 public class MainView extends JPanel{
 
@@ -90,8 +94,7 @@ public class MainView extends JPanel{
 		txtPhoneNo = new JTextField(20);
 		
 		pnlFields = new JPanel(new GridBagLayout());
-		
-		
+
 		btnFirst = new JButton("f");
 		btnSecond = new JButton("s");
 	}
@@ -104,10 +107,6 @@ public class MainView extends JPanel{
 		pnlInfo.add(lblDocumentType, new GridBagConstraints(0, 2, 1, 1, 0, 0, GridBagConstraints.WEST, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		
-		/*pnlInfo.add(btnFirst, new GridBagConstraints(7, 0, 1, 1, 0, 0, GridBagConstraints.WEST,
-				GridBagConstraints.NONE, new Insets(5,  5,  5,  5), 0, 0));
-		pnlInfo.add(btnSecond, new GridBagConstraints(7, 2, 1, 1, 0, 0, GridBagConstraints.WEST, 
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));*/
 		
 		pnlButtons.add(btnFirst, BorderLayout.NORTH);
 		pnlButtons.add(btnSecond, BorderLayout.SOUTH);
@@ -164,9 +163,9 @@ public class MainView extends JPanel{
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		
 		pnlFields.add(lblPhoneNo, new GridBagConstraints(0, 9, 1, 1, 0, 0, GridBagConstraints.WEST, 
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+				GridBagConstraints.NONE, new Insets(5, 5, 40, 5), 0, 0));
 		pnlFields.add(txtPhoneNo, new GridBagConstraints(1, 9, 1, 1, 0, 0, GridBagConstraints.WEST, 
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+				GridBagConstraints.NONE, new Insets(5, 5, 40, 5), 0, 0));
 		
 		add(pnlFields, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.PAGE_END, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
