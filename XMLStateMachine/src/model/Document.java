@@ -131,7 +131,7 @@ public class Document {
 		return this.currentState;
 	}
 	
-	/*private List<UpdateListener> listeners = new ArrayList<UpdateListener>();
+	private List<UpdateListener> listeners = new ArrayList<UpdateListener>();
 	
 	public void addListener(UpdateListener listener) {
 		listeners.add(listener);
@@ -141,11 +141,41 @@ public class Document {
 		listeners.remove(listener);
 	}
 	
-	public void refreshForm() {		
+	public void nextState(int id, boolean succeed) {
+		int br = 0;
+		if(succeed) {
+			for (Transition t : this.currentState.getTransitions()) {
+				if(t.getStartState() == this.currentState) {
+					if(++br == id) {
+						changeState(t.getTransitionOnSucceed());
+					}
+				}
+			}
+		} else {
+			for (Transition t : this.currentState.getTransitions()) {
+				if(t.getStartState() == this.currentState) {
+					if(++br == id) {
+						changeState(t.getTransitionOnFail());
+					}
+				}
+			}
+		}
+	}
+	
+	public void refreshFormSucceed(int id) {
+		nextState(id, true);
 		UpdateEvent e = new UpdateEvent(this, this.currentState);
 		for (UpdateListener updateListener : listeners) {
 			updateListener.updatePerformed(e);
 		}
-	}*/
+	}
+	
+	public void refreshFormFail(int id) {
+		nextState(id, false);
+		UpdateEvent e = new UpdateEvent(this, this.currentState);
+		for (UpdateListener updateListener : listeners) {
+			updateListener.updatePerformed(e);
+		}
+	}
 
 }

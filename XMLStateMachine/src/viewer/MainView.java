@@ -17,13 +17,14 @@ public class MainView extends JPanel{
 	private ButtonPanel pnlButtons;
 	private FieldPanel pnlFields;
 	
+	
 	public MainView() {
 		
         setLayout(new GridBagLayout());
 		
 		pnlInfo = new InfoPanel();
-		pnlButtons = new ButtonPanel();
 		pnlFields = new FieldPanel();	
+		pnlButtons = new ButtonPanel(pnlFields);
 		
 		add(pnlInfo, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.FIRST_LINE_START, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
@@ -33,8 +34,11 @@ public class MainView extends JPanel{
 		
 		
 		add(pnlFields, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.PAGE_END, 
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 30));
 		
+		model.Main.d.addListener(pnlInfo);
+		model.Main.d.addListener(pnlButtons);
+		model.Main.d.addListener(pnlFields);
 	}
 	
 }

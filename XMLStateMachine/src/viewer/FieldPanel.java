@@ -8,7 +8,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FieldPanel extends JPanel{
+import controller.UpdateEvent;
+import controller.UpdateListener;
+import model.State;
+import model.Field;
+
+public class FieldPanel extends JPanel implements UpdateListener{
 
 	/**
 	 * 
@@ -113,6 +118,278 @@ public class FieldPanel extends JPanel{
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		
 		
+	}
+	
+	public boolean check(State curr) {
+		boolean ok = true;
+		
+		for (Field f : curr.getStateMandatoryFields()) {
+			switch(f.getName()) {
+			case "ACCESS_PERMIT_STATUS": {
+				if(txtStatus.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "ACCESS_PERMIT_NAME": {
+				if(txtName.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "ACCESS_PERMIT_DATE_TIME": {
+				if(txtDateTime.getText().isEmpty())
+					ok = false;
+			}
+			case "ACCESS_PERMIT_ANSWERS": {
+				if(txtAnswers.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "SAFETY_DOCUMENT_REV_NO": {
+				if(txtRevNo.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "ACCESS_PERMIT_PREV_STATE": {
+				if(txtPrevState.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "ACCESS_PERMIT_DENYING_REASON": {
+				if(txtDenyReason.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "ACCESS_PERMIT_EQUIPMENT": {
+				if(txtEquip.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "ACCESS_PERMIT_POINTS": {
+				if(txtPoints.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			case "ACCESS_PERMIT_PHONE_NO": {
+				if(txtPhoneNo.getText().isEmpty())
+					ok = false;
+				break;
+			}
+			default: break;
+			}
+			
+			if(!ok)
+				break;
+		}
+		
+		return ok;
+	}
+	
+	void refreshForm() {
+		txtAnswers.setVisible(true);
+		txtDateTime.setVisible(true);
+		txtDenyReason.setVisible(true);
+		txtEquip.setVisible(true);
+		txtName.setVisible(true);
+		txtPhoneNo.setVisible(true);
+		txtPoints.setVisible(true);
+		txtPrevState.setVisible(true);
+		txtRevNo.setVisible(true);
+		txtStatus.setVisible(true);
+		
+		txtAnswers.setEditable(true);
+		txtDateTime.setEditable(true);
+		txtDenyReason.setEditable(true);
+		txtEquip.setEditable(true);
+		txtName.setEditable(true);
+		txtPhoneNo.setEditable(true);
+		txtPoints.setEditable(true);
+		txtPrevState.setEditable(true);
+		txtRevNo.setEditable(true);
+		txtStatus.setEditable(true);
+		
+		lblAnswers.setVisible(true);
+		lblDateTime.setVisible(true);
+		lblDenyReason.setVisible(true);
+		lblEquip.setVisible(true);
+		lblName.setVisible(true);
+		lblPhoneNo.setVisible(true);
+		lblPoints.setVisible(true);
+		lblPrevState.setVisible(true);
+		lblRevNo.setVisible(true);
+		lblStatus.setVisible(true);
+		
+		if(lblAnswers.getText().contains("*"))
+			lblAnswers.setText(lblAnswers.getText().split("\\*")[1].trim());
+		if(lblDateTime.getText().contains("*"))
+			lblDateTime.setText(lblDateTime.getText().split("\\*")[1].trim());
+		if(lblDenyReason.getText().contains("*"))
+			lblDenyReason.setText(lblDenyReason.getText().split("\\*")[1].trim());
+		if(lblEquip.getText().contains("*"))
+			lblEquip.setText(lblEquip.getText().split("\\*")[1].trim());
+		if(lblName.getText().contains("*"))
+			lblName.setText(lblName.getText().split("\\*")[1].trim());
+		if(lblPhoneNo.getText().contains("*"))
+			lblPhoneNo.setText(lblPhoneNo.getText().split("\\*")[1].trim());
+		if(lblPoints.getText().contains("*"))
+			lblPoints.setText(lblPoints.getText().split("\\*")[1].trim());
+		if(lblPrevState.getText().contains("*"))
+			lblPrevState.setText(lblPrevState.getText().split("\\*")[1].trim());
+		if(lblRevNo.getText().contains("*"))
+			lblRevNo.setText(lblRevNo.getText().split("\\*")[1].trim());
+		if(lblStatus.getText().contains("*"))
+			lblStatus.setText(lblStatus.getText().split("\\*")[1].trim());
+	}
+
+	@Override
+	public void updatePerformed(UpdateEvent e) {
+		State curr = e.getCurrentState();
+		
+		refreshForm();
+		
+		for (Field f : curr.getStateDenyModifyingFields()) {
+			switch(f.getName()) {
+			case "ACCESS_PERMIT_STATUS": {
+				txtStatus.setEditable(false);
+				break;
+			}
+			case "ACCESS_PERMIT_NAME": {
+				txtName.setEditable(false);
+				break;
+			}
+			case "ACCESS_PERMIT_DATE_TIME": {
+				txtDateTime.setEditable(false);
+			}
+			case "ACCESS_PERMIT_ANSWERS": {
+				txtAnswers.setEditable(false);
+				break;
+			}
+			case "SAFETY_DOCUMENT_REV_NO": {
+				txtRevNo.setEditable(false);
+				break;
+			}
+			case "ACCESS_PERMIT_PREV_STATE": {
+				txtPrevState.setEditable(false);
+				break;
+			}
+			case "ACCESS_PERMIT_DENYING_REASON": {
+				txtDenyReason.setEditable(false);
+				break;
+			}
+			case "ACCESS_PERMIT_EQUIPMENT": {
+				txtEquip.setEditable(false);
+				break;
+			}
+			case "ACCESS_PERMIT_POINTS": {
+				txtPoints.setEditable(false);
+				break;
+			}
+			case "ACCESS_PERMIT_PHONE_NO": {
+				txtPhoneNo.setEditable(false);
+				break;
+			}
+			default: break;
+			}
+		}
+		
+		for (Field f : curr.getStateHideFields()) {
+			switch(f.getName()) {
+			case "ACCESS_PERMIT_STATUS": {
+				txtStatus.setVisible(false);
+				lblStatus.setVisible(false);
+				break;
+			}
+			case "ACCESS_PERMIT_NAME": {
+				txtName.setVisible(false);
+				lblName.setVisible(false);
+				break;
+			}
+			case "ACCESS_PERMIT_DATE_TIME": {
+				txtDateTime.setVisible(false);
+				lblDateTime.setVisible(false);
+			}
+			case "ACCESS_PERMIT_ANSWERS": {
+				txtAnswers.setVisible(false);
+				lblAnswers.setVisible(false);
+				break;
+			}
+			case "SAFETY_DOCUMENT_REV_NO": {
+				txtRevNo.setVisible(false);
+				lblRevNo.setVisible(false);
+				break;
+			}
+			case "ACCESS_PERMIT_PREV_STATE": {
+				txtPrevState.setVisible(false);
+				lblPrevState.setVisible(false);
+				break;
+			}
+			case "ACCESS_PERMIT_DENYING_REASON": {
+				txtDenyReason.setVisible(false);
+				lblDenyReason.setVisible(false);
+				break;
+			}
+			case "ACCESS_PERMIT_EQUIPMENT": {
+				txtEquip.setVisible(false);
+				lblEquip.setVisible(false);
+				break;
+			}
+			case "ACCESS_PERMIT_POINTS": {
+				txtPoints.setVisible(false);
+				lblPoints.setVisible(false);
+				break;
+			}
+			case "ACCESS_PERMIT_PHONE_NO": {
+				txtPhoneNo.setVisible(false);
+				lblPhoneNo.setVisible(false);
+				break;
+			}
+			default: break;
+			}
+		}
+		
+		for (Field f : curr.getStateMandatoryFields()) {
+			switch(f.getName()) {
+			case "ACCESS_PERMIT_STATUS": {
+				lblStatus.setText("* " + lblStatus.getText());
+				break;
+			}
+			case "ACCESS_PERMIT_NAME": {
+				lblName.setText("* " + lblName.getText());
+				break;
+			}
+			case "ACCESS_PERMIT_DATE_TIME": {
+				lblDateTime.setText("* " + lblDateTime.getText());
+			}
+			case "ACCESS_PERMIT_ANSWERS": {
+				lblAnswers.setText("* " + lblAnswers.getText());
+				break;
+			}
+			case "SAFETY_DOCUMENT_REV_NO": {
+				lblRevNo.setText("* " + lblRevNo.getText());
+				break;
+			}
+			case "ACCESS_PERMIT_PREV_STATE": {
+				lblPrevState.setText("* " + lblPrevState.getText());
+				break;
+			}
+			case "ACCESS_PERMIT_DENYING_REASON": {
+				lblDenyReason.setText("* " + lblDenyReason.getText());
+				break;
+			}
+			case "ACCESS_PERMIT_EQUIPMENT": {
+				lblEquip.setText("* " + lblEquip.getText());
+				break;
+			}
+			case "ACCESS_PERMIT_POINTS": {
+				lblPoints.setText("* " + lblPoints.getText());
+				break;
+			}
+			case "ACCESS_PERMIT_PHONE_NO": {
+				lblPhoneNo.setText("* " + lblPhoneNo.getText());
+				break;
+			}
+			default: break;
+			}
+		}
 	}
 
 }

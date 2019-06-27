@@ -8,6 +8,8 @@ package model;
 
 import java.util.ArrayList;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 public class State {
 	private String lifecycleName;
 	private String displayName;
@@ -203,6 +205,20 @@ public class State {
 				return t;
 		}
 		return null;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == null)
+			return false;
+		if(o instanceof State) {
+			State temp = (State) o;
+			if(temp.getEntityId() == this.getEntityId())
+				return true;
+			else
+				return false;
+		} else
+			return false;
 	}
 
 }

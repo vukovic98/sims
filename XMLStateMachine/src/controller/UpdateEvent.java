@@ -4,13 +4,12 @@ import java.util.EventObject;
 
 import model.State;
 
-public class UpdateEvent extends EventObject{
-	
+public class UpdateEvent extends EventObject {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	State currentState;
 
 	public UpdateEvent(Object o, State c) {
@@ -25,7 +24,5 @@ public class UpdateEvent extends EventObject{
 	public void setCurrentState(State current) {
 		this.currentState = current;
 	}
-	
-	
 
 }
