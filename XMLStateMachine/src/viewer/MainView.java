@@ -1,14 +1,9 @@
 package viewer;
 
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class MainView extends JPanel{
 
@@ -17,12 +12,10 @@ public class MainView extends JPanel{
 	 */
 	private static final long serialVersionUID = -3018696746928226635L;
 
+
 	private InfoPanel pnlInfo;
 	private ButtonPanel pnlButtons;
 	private FieldPanel pnlFields;
-	
-	//addListeners(pnlInfo, pnlButtons, pnlButtons);
-	
 	
 	public MainView() {
 		
@@ -37,6 +30,7 @@ public class MainView extends JPanel{
 		
 		add(pnlButtons, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.FIRST_LINE_END, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 25));
+		
 		
 		add(pnlFields, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.PAGE_END, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
