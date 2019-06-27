@@ -99,12 +99,12 @@
         </stateMandatoryFields>
         <actions>
           <model.Action>
-            <name>deny</name>
-            <label>Deny</label>
-          </model.Action>
-          <model.Action>
             <name>publish</name>
             <label>Publish</label>
+          </model.Action>
+          <model.Action>
+            <name>deny</name>
+            <label>Deny</label>
           </model.Action>
         </actions>
         <transitions>
@@ -128,6 +128,12 @@
                 <model.Field reference="../../../../../../startState/stateDenyModifyingFields/model.Field"/>
                 <model.Field reference="../../../../../../startState/stateDenyModifyingFields/model.Field[2]"/>
                 <model.Field reference="../../../../../../startState/stateDenyModifyingFields/model.Field[3]"/>
+                <model.Field reference="../../../../../stateMandatoryFields/model.Field"/>
+                <model.Field>
+                  <name>ACCESS_PERMIT_POINTS</name>
+                  <dataType>string</dataType>
+                  <label>Points: </label>
+                </model.Field>
               </stateDenyModifyingFields>
               <stateHideFields>
                 <model.Field reference="../../../../../../startState/stateHideFields/model.Field[4]"/>
@@ -135,11 +141,7 @@
               </stateHideFields>
               <stateMandatoryFields>
                 <model.Field reference="../../../../../stateMandatoryFields/model.Field"/>
-                <model.Field>
-                  <name>ACCESS_PERMIT_POINTS</name>
-                  <dataType>string</dataType>
-                  <label>Points: </label>
-                </model.Field>
+                <model.Field reference="../../stateDenyModifyingFields/model.Field[5]"/>
               </stateMandatoryFields>
               <actions>
                 <model.Action>
@@ -169,6 +171,13 @@
                       <model.Field reference="../../../../../../../../../startState/stateDenyModifyingFields/model.Field[2]"/>
                       <model.Field reference="../../../../../../../../../startState/stateDenyModifyingFields/model.Field[3]"/>
                       <model.Field reference="../../../../../../../../../startState/stateDenyModifyingFields/model.Field[4]"/>
+                      <model.Field reference="../../../../../../../../stateMandatoryFields/model.Field"/>
+                      <model.Field reference="../../../../../stateDenyModifyingFields/model.Field[5]"/>
+                      <model.Field>
+                        <name>ACCESS_PERMIT_PHONE_NO</name>
+                        <dataType>string</dataType>
+                        <label>Phone number: </label>
+                      </model.Field>
                     </stateDenyModifyingFields>
                     <stateHideFields>
                       <model.Field reference="../../../../../../../../../startState/stateHideFields/model.Field[4]"/>
@@ -176,12 +185,8 @@
                     </stateHideFields>
                     <stateMandatoryFields>
                       <model.Field reference="../../../../../../../../stateMandatoryFields/model.Field"/>
-                      <model.Field reference="../../../../../stateMandatoryFields/model.Field[2]"/>
-                      <model.Field>
-                        <name>ACCESS_PERMIT_PHONE_NO</name>
-                        <dataType>string</dataType>
-                        <label>Phone number: </label>
-                      </model.Field>
+                      <model.Field reference="../../../../../stateDenyModifyingFields/model.Field[5]"/>
+                      <model.Field reference="../../stateDenyModifyingFields/model.Field[7]"/>
                     </stateMandatoryFields>
                     <actions>
                       <model.Action>
@@ -211,7 +216,9 @@
                             <model.Field reference="../../../../../../../../../../../../startState/stateDenyModifyingFields/model.Field[2]"/>
                             <model.Field reference="../../../../../../../../../../../../startState/stateDenyModifyingFields/model.Field[3]"/>
                             <model.Field reference="../../../../../../../../../../../../startState/stateDenyModifyingFields/model.Field[4]"/>
-                            <model.Field reference="../../../../../stateMandatoryFields/model.Field[3]"/>
+                            <model.Field reference="../../../../../../../../../../../stateMandatoryFields/model.Field"/>
+                            <model.Field reference="../../../../../../../../stateDenyModifyingFields/model.Field[5]"/>
+                            <model.Field reference="../../../../../stateDenyModifyingFields/model.Field[7]"/>
                           </stateDenyModifyingFields>
                           <stateHideFields>
                             <model.Field reference="../../../../../../../../../../../../startState/stateHideFields/model.Field[4]"/>
@@ -219,7 +226,7 @@
                           </stateHideFields>
                           <stateMandatoryFields>
                             <model.Field reference="../../../../../../../../../../../stateMandatoryFields/model.Field"/>
-                            <model.Field reference="../../../../../../../../stateMandatoryFields/model.Field[2]"/>
+                            <model.Field reference="../../../../../../../../stateDenyModifyingFields/model.Field[5]"/>
                           </stateMandatoryFields>
                           <actions>
                             <model.Action>
@@ -249,8 +256,8 @@
                                   <model.Field reference="../../../../../../../../../../../../../../../startState/stateDenyModifyingFields/model.Field[3]"/>
                                   <model.Field reference="../../../../../../../../../../../../../../../startState/stateDenyModifyingFields/model.Field[4]"/>
                                   <model.Field reference="../../../../../../../../../../../../../../stateMandatoryFields/model.Field"/>
-                                  <model.Field reference="../../../../../../../../../../../stateMandatoryFields/model.Field[2]"/>
-                                  <model.Field reference="../../../../../../../../stateMandatoryFields/model.Field[3]"/>
+                                  <model.Field reference="../../../../../../../../../../../stateDenyModifyingFields/model.Field[5]"/>
+                                  <model.Field reference="../../../../../../../../stateDenyModifyingFields/model.Field[7]"/>
                                 </stateDenyModifyingFields>
                                 <stateHideFields>
                                   <model.Field reference="../../../../../../../../../../../../../../../startState/stateHideFields/model.Field[5]"/>
@@ -281,8 +288,8 @@
                                         <model.Field reference="../../../../../../../../../../../../../../../../../../startState/stateDenyModifyingFields/model.Field[4]"/>
                                         <model.Field reference="../../../../../../../../../../../../../../../../../../startState/stateHideFields/model.Field[4]"/>
                                         <model.Field reference="../../../../../../../../../../../../../../../../../stateMandatoryFields/model.Field"/>
-                                        <model.Field reference="../../../../../../../../../../../../../../stateMandatoryFields/model.Field[2]"/>
-                                        <model.Field reference="../../../../../../../../../../../stateMandatoryFields/model.Field[3]"/>
+                                        <model.Field reference="../../../../../../../../../../../../../../stateDenyModifyingFields/model.Field[5]"/>
+                                        <model.Field reference="../../../../../../../../../../../stateDenyModifyingFields/model.Field[7]"/>
                                       </stateDenyModifyingFields>
                                       <stateHideFields>
                                         <model.Field reference="../../../../../../../../../../../../../../../../../../startState/stateDenyModifyingFields/model.Field[2]"/>
@@ -339,8 +346,8 @@
   <currentState reference="../transitions/model.Transition/startState"/>
   <actions>
     <model.Action reference="../../transitions/model.Transition/startState/actions/model.Action"/>
-    <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/actions/model.Action"/>
     <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/actions/model.Action[2]"/>
+    <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/actions/model.Action"/>
     <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/actions/model.Action"/>
     <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/actions/model.Action"/>
     <model.Action reference="../../transitions/model.Transition/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/actions/model.Action"/>
@@ -354,8 +361,8 @@
     <model.Field reference="../../transitions/model.Transition/startState/stateHideFields/model.Field[4]"/>
     <model.Field reference="../../transitions/model.Transition/startState/stateHideFields/model.Field[5]"/>
     <model.Field reference="../../transitions/model.Transition/transitionOnSucceed/stateMandatoryFields/model.Field"/>
-    <model.Field reference="../../transitions/model.Transition/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/stateMandatoryFields/model.Field[2]"/>
-    <model.Field reference="../../transitions/model.Transition/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/stateMandatoryFields/model.Field[3]"/>
+    <model.Field reference="../../transitions/model.Transition/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[5]"/>
+    <model.Field reference="../../transitions/model.Transition/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/transitions/model.Transition[2]/transitionOnSucceed/stateDenyModifyingFields/model.Field[7]"/>
   </fields>
   <listeners/>
 </model.Document>
