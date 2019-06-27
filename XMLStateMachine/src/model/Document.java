@@ -6,6 +6,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import controller.UpdateListener;
+import controller.UpdateEvent;
 
 public class Document {
 
@@ -126,5 +130,22 @@ public class Document {
 		this.currentState = newState;
 		return this.currentState;
 	}
+	
+	/*private List<UpdateListener> listeners = new ArrayList<UpdateListener>();
+	
+	public void addListener(UpdateListener listener) {
+		listeners.add(listener);
+	}
+		
+	public void removeListener(UpdateListener listener) {
+		listeners.remove(listener);
+	}
+	
+	public void refreshForm() {		
+		UpdateEvent e = new UpdateEvent(this, this.currentState);
+		for (UpdateListener updateListener : listeners) {
+			updateListener.updatePerformed(e);
+		}
+	}*/
 
 }
