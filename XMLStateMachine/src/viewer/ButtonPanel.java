@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.Field;
@@ -12,6 +14,8 @@ import model.State;
 
 import controller.UpdateEvent;
 import controller.UpdateListener;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class ButtonPanel extends JPanel implements UpdateListener {
 
@@ -44,8 +48,11 @@ public class ButtonPanel extends JPanel implements UpdateListener {
 				boolean ok = validation();
 				if(ok)
 					model.Main.d.refreshFormSucceed(1);
-				else
+				else {
+					String message = "Mandatory fields must be filled!";
+					JOptionPane.showMessageDialog(new JFrame(), message, "Warning", JOptionPane.ERROR_MESSAGE);
 					model.Main.d.refreshFormFail(1);
+				}
 			}
 		});
 		
@@ -56,8 +63,11 @@ public class ButtonPanel extends JPanel implements UpdateListener {
 				boolean ok = validation();
 				if(ok)
 					model.Main.d.refreshFormSucceed(2);
-				else
+				else {
+					String message = "Mandatory fields must be filled!";
+					JOptionPane.showMessageDialog(new JFrame(), message, "Warning", JOptionPane.ERROR_MESSAGE);
 					model.Main.d.refreshFormFail(2);
+				}
 			}
 		});
 		
