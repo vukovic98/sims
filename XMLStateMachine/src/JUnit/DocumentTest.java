@@ -19,6 +19,7 @@ class DocumentTest extends Document {
 		testAddField();
 		testFindField();
 		testDeleteField();
+		testChangeState();
 	}
 	
 	public void testNextState() {
@@ -33,6 +34,12 @@ class DocumentTest extends Document {
 		s2.addTransition(t);
 		
 		assertEquals(s2, super.nextState(id, succeed));
+	}
+	
+	public void testChangeState() {
+		State s1 = new State("1", "1", "AccessPermit", 1);
+		
+		assertEquals(s1, super.changeState(s1));
 	}
 	
 	public void testAddField() {
