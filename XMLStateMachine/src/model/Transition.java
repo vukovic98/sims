@@ -77,5 +77,18 @@ public class Transition {
 	public void setTransitionOnFail(State transitionOnFail) {
 		this.transitionOnFail = transitionOnFail;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == null)
+			return false;
+		if(o instanceof Transition) {
+			Transition t = (Transition)o;
+			if(t.getEntityId() == this.getEntityId())
+				return true;
+			return false;
+		} else
+			return false;
+	}
 
 }

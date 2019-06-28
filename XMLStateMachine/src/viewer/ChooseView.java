@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -85,10 +87,14 @@ public class ChooseView extends JPanel{
 	void submit() {
 		XStream xs = new XStream();
 		
-		xs.fromXML(new File(txtPath.getText()), model.Main.d);
-		
-		MainFrame mFrame = new MainFrame();
-		mFrame.setVisible(true);
+		try {
+			xs.fromXML(new File(txtPath.getText()), model.Main.d);
+			MainFrame mFrame = new MainFrame();
+			mFrame.setVisible(true);
+		} catch (Exception e) {
+			String message = ".xml file must be chosen!";
+			JOptionPane.showMessageDialog(new JFrame(), message, "Error", JOptionPane.ERROR_MESSAGE);
+		}
 		
 	}
 	
