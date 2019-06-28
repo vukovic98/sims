@@ -141,7 +141,7 @@ public class Document {
 		listeners.remove(listener);
 	}
 	
-	public void nextState(int id, boolean succeed) {
+	public State nextState(int id, boolean succeed) {
 		int br = 0;
 		if(succeed) {
 			for (Transition t : this.currentState.getTransitions()) {
@@ -160,6 +160,8 @@ public class Document {
 				}
 			}
 		}
+		
+		return this.currentState;
 	}
 	
 	public void refreshFormSucceed(int id) {
@@ -176,6 +178,19 @@ public class Document {
 		for (UpdateListener updateListener : listeners) {
 			updateListener.updatePerformed(e);
 		}
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == null)
+			return false;
+		if(o instanceof Document) {
+			Document d = (Document)o;
+			if(d.getTitle().equalsIgnoreCase(this.getTitle()))
+				return true;
+			return false;
+		} else
+			return false;
 	}
 
 }

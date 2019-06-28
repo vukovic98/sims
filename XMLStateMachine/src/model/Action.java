@@ -34,5 +34,18 @@ public class Action {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == null)
+			return false;
+		if(o instanceof Action) {
+			Action a = (Action)o;
+			if(a.getName().equalsIgnoreCase(this.getName()))
+				return true;
+			return false;
+		} else
+			return false;
+	}
 
 }

@@ -44,5 +44,18 @@ public class Field {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == null)
+			return false;
+		if(o instanceof Field) {
+			Field f = (Field)o;
+			if(f.getName().equalsIgnoreCase(this.getName()))
+				return true;
+			return false;
+		} else
+			return false;
+	}
 
 }
