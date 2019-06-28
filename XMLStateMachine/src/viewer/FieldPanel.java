@@ -117,6 +117,90 @@ public class FieldPanel extends JPanel implements UpdateListener{
 		add(txtPhoneNo, new GridBagConstraints(1, 9, 1, 1, 0, 0, GridBagConstraints.WEST, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		
+		for (Field f : model.Main.d.getCurrentState().getStateDenyModifyingFields()) {
+			switch(f.getName()) {
+			case "ACCESS_PERMIT_STATUS": {
+				txtStatus.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtStatus.setVisible(false);
+					lblStatus.setVisible(false);
+				}
+				break;
+			}
+			case "ACCESS_PERMIT_NAME": {
+				txtName.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtName.setVisible(false);
+					lblName.setVisible(false);
+				}
+				break;
+			}
+			case "ACCESS_PERMIT_DATE_TIME": {
+				txtDateTime.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtDateTime.setVisible(false);
+					lblDateTime.setVisible(false);
+				}
+			}
+			case "ACCESS_PERMIT_ANSWERS": {
+				txtAnswers.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtAnswers.setVisible(false);
+					lblAnswers.setVisible(false);
+				}
+				break;
+			}
+			case "SAFETY_DOCUMENT_REV_NO": {
+				txtRevNo.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtRevNo.setVisible(false);
+					lblRevNo.setVisible(false);
+				}
+				break;
+			}
+			case "ACCESS_PERMIT_PREV_STATE": {
+				txtPrevState.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtPrevState.setVisible(false);
+					lblPrevState.setVisible(false);
+				}
+				break;
+			}
+			case "ACCESS_PERMIT_DENYING_REASON": {
+				txtDenyReason.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtDenyReason.setVisible(false);
+					lblDenyReason.setVisible(false);
+				}
+				break;
+			}
+			case "ACCESS_PERMIT_EQUIPMENT": {
+				txtEquip.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtEquip.setVisible(false);
+					lblEquip.setVisible(false);
+				}
+				break;
+			}
+			case "ACCESS_PERMIT_POINTS": {
+				txtPoints.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtPoints.setVisible(false);
+					lblPoints.setVisible(false);
+				}
+				break;
+			}
+			case "ACCESS_PERMIT_PHONE_NO": {
+				txtPhoneNo.setEditable(false);
+				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
+					txtPhoneNo.setVisible(false);
+					lblPhoneNo.setVisible(false);
+				}
+				break;
+			}
+			default: break;
+			}
+		}
 		
 	}
 	
