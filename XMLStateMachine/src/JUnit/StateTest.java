@@ -2,16 +2,12 @@ package JUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import model.State;
 
 class StateTest extends State {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
 
 	@Test
 	void testEquals() {
