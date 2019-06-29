@@ -9,13 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import model.Field;
 import model.State;
 
 import controller.UpdateEvent;
 import controller.UpdateListener;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class ButtonPanel extends JPanel implements UpdateListener {
 

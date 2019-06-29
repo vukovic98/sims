@@ -3,14 +3,20 @@ package viewer;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.UpdateEvent;
 import controller.UpdateListener;
 import model.State;
+import model.StateSemantics;
 import model.Field;
 
 public class FieldPanel extends JPanel implements UpdateListener{
@@ -42,6 +48,9 @@ public class FieldPanel extends JPanel implements UpdateListener{
 	private JTextField txtPoints;
 	private JTextField txtPhoneNo;
 	
+	private JButton btnSave;
+	private JButton btnDelete;
+	
 	public FieldPanel()
 	{
 		setLayout(new GridBagLayout());
@@ -66,6 +75,29 @@ public class FieldPanel extends JPanel implements UpdateListener{
 		txtEquip = new JTextField(20);
 		txtPoints = new JTextField(20);
 		txtPhoneNo = new JTextField(20);
+		
+		btnSave = new JButton("Save");
+		btnDelete = new JButton("Delete");
+		
+		btnSave.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String message = "State saved!";
+				JOptionPane.showMessageDialog(new JFrame(), message, "State", JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				delete();
+				String message = "State information deleted!";
+				JOptionPane.showMessageDialog(new JFrame(), message, "State", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		
 		add(lblStatus, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.WEST, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
@@ -117,91 +149,25 @@ public class FieldPanel extends JPanel implements UpdateListener{
 		add(txtPhoneNo, new GridBagConstraints(1, 9, 1, 1, 0, 0, GridBagConstraints.WEST, 
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		
-		for (Field f : model.Main.d.getCurrentState().getStateDenyModifyingFields()) {
-			switch(f.getName()) {
-			case "ACCESS_PERMIT_STATUS": {
-				txtStatus.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtStatus.setVisible(false);
-					lblStatus.setVisible(false);
-				}
-				break;
-			}
-			case "ACCESS_PERMIT_NAME": {
-				txtName.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtName.setVisible(false);
-					lblName.setVisible(false);
-				}
-				break;
-			}
-			case "ACCESS_PERMIT_DATE_TIME": {
-				txtDateTime.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtDateTime.setVisible(false);
-					lblDateTime.setVisible(false);
-				}
-			}
-			case "ACCESS_PERMIT_ANSWERS": {
-				txtAnswers.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtAnswers.setVisible(false);
-					lblAnswers.setVisible(false);
-				}
-				break;
-			}
-			case "SAFETY_DOCUMENT_REV_NO": {
-				txtRevNo.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtRevNo.setVisible(false);
-					lblRevNo.setVisible(false);
-				}
-				break;
-			}
-			case "ACCESS_PERMIT_PREV_STATE": {
-				txtPrevState.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtPrevState.setVisible(false);
-					lblPrevState.setVisible(false);
-				}
-				break;
-			}
-			case "ACCESS_PERMIT_DENYING_REASON": {
-				txtDenyReason.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtDenyReason.setVisible(false);
-					lblDenyReason.setVisible(false);
-				}
-				break;
-			}
-			case "ACCESS_PERMIT_EQUIPMENT": {
-				txtEquip.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtEquip.setVisible(false);
-					lblEquip.setVisible(false);
-				}
-				break;
-			}
-			case "ACCESS_PERMIT_POINTS": {
-				txtPoints.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtPoints.setVisible(false);
-					lblPoints.setVisible(false);
-				}
-				break;
-			}
-			case "ACCESS_PERMIT_PHONE_NO": {
-				txtPhoneNo.setEditable(false);
-				if(model.Main.d.getCurrentState().getStateHideFields().contains(f)) {
-					txtPhoneNo.setVisible(false);
-					lblPhoneNo.setVisible(false);
-				}
-				break;
-			}
-			default: break;
-			}
-		}
+		add(btnSave, new GridBagConstraints(1, 10, 1, 1, 0, 0, GridBagConstraints.WEST, 
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		add(btnDelete, new GridBagConstraints(1, 10, 1, 1, 0, 0, GridBagConstraints.LAST_LINE_END, 
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		
+		setForm(model.Main.d.getCurrentState());
+	}
+	
+	public void delete() {
+		txtAnswers.setText("");
+		txtDateTime.setText("");
+		txtDenyReason.setText("");
+		txtEquip.setText("");
+		txtName.setText("");
+		txtPhoneNo.setText("");
+		txtPoints.setText("");
+		txtPrevState.setText("");
+		txtRevNo.setText("");
+		txtStatus.setText("");
 	}
 	
 	public boolean check(State curr) {
@@ -222,6 +188,7 @@ public class FieldPanel extends JPanel implements UpdateListener{
 			case "ACCESS_PERMIT_DATE_TIME": {
 				if(txtDateTime.getText().isEmpty())
 					ok = false;
+				break;
 			}
 			case "ACCESS_PERMIT_ANSWERS": {
 				if(txtAnswers.getText().isEmpty())
@@ -323,12 +290,18 @@ public class FieldPanel extends JPanel implements UpdateListener{
 		if(lblStatus.getText().contains("*"))
 			lblStatus.setText(lblStatus.getText().split("\\*")[1].trim());
 	}
-
-	@Override
-	public void updatePerformed(UpdateEvent e) {
-		State curr = e.getCurrentState();
+	
+	void setForm(State curr) {
 		
-		refreshForm();
+		if(curr.getStateSemantic().contains(StateSemantics.SaveEnabled))
+			btnSave.setVisible(true);
+		else
+			btnSave.setVisible(false);
+		
+		if(curr.getStateSemantic().contains(StateSemantics.DeleteEnabled))
+			btnDelete.setVisible(true);
+		else
+			btnDelete.setVisible(false);
 		
 		for (Field f : curr.getStateDenyModifyingFields()) {
 			switch(f.getName()) {
@@ -342,6 +315,7 @@ public class FieldPanel extends JPanel implements UpdateListener{
 			}
 			case "ACCESS_PERMIT_DATE_TIME": {
 				txtDateTime.setEditable(false);
+				break;
 			}
 			case "ACCESS_PERMIT_ANSWERS": {
 				txtAnswers.setEditable(false);
@@ -390,6 +364,7 @@ public class FieldPanel extends JPanel implements UpdateListener{
 			case "ACCESS_PERMIT_DATE_TIME": {
 				txtDateTime.setVisible(false);
 				lblDateTime.setVisible(false);
+				break;
 			}
 			case "ACCESS_PERMIT_ANSWERS": {
 				txtAnswers.setVisible(false);
@@ -442,6 +417,7 @@ public class FieldPanel extends JPanel implements UpdateListener{
 			}
 			case "ACCESS_PERMIT_DATE_TIME": {
 				lblDateTime.setText("* " + lblDateTime.getText());
+				break;
 			}
 			case "ACCESS_PERMIT_ANSWERS": {
 				lblAnswers.setText("* " + lblAnswers.getText());
@@ -474,6 +450,16 @@ public class FieldPanel extends JPanel implements UpdateListener{
 			default: break;
 			}
 		}
+	}
+
+	@Override
+	public void updatePerformed(UpdateEvent e) {
+		State curr = e.getCurrentState();
+		
+		refreshForm();
+		
+		setForm(curr);
+		
 	}
 
 }
